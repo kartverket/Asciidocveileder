@@ -1,0 +1,445 @@
+= Veileder for bruk av AsciiDoc til SOSI standarder og produktspesifikasjoner
+Standardiseringssekretariatet <standardiseringssekretariatet@kartverket.no>
+:encoding: utf-8
+:lang: nb
+include::Språk-{lang}.adoc[]
+:toc: left
+:toclevels: 4
+:sectnums:
+:sectnumlevels: 4
+:numbered:
+:!chapter-signifier: 
+:!example-caption:
+:source-highlighter: rouge
+:stem: latexmath
+:eqnums:
+:icons: font
+ 
+:malURL: https://www.geonorge.no/globalassets/geonorge2/standardisering/maler/asciidocmaler.zip
+
+Dette dokumentet er ment som en introduksjon og veileder til de som skal lage produktspesifikasjoner eller standarder i AsciiDoc. 
+
+For en mer fullstendig gjennomgang av funksjonalitet i AsciiDoc, anbefales det å gå til link:https://docs.asciidoctor.org/[Asciidoctor Documentation Site^].
+
+Dersom det er informasjon i dette dokumentet som er feil eller utdatert, eller dersom det er funksjonalitet i AsciiDoc som du mener bør være en del av denne veilederen, ta kontakt med mailto:standardiseringssekretariatet@kartverket.no[Standardiseringssekretariatet]. 
+
+== Verktøy og maler
+
+=== Maler for standarder og produktspesifikasjoner
+Malene for standarder og produktspesifikasjonsmaler ligger på link:{malURL}[Geonorge^].
+
+Zip-fila skal inneholde følgende filer:
+
+* *Produktspesifikasjonsmal.adoc*: Mal for produktspesifikasjoner og standardiserte produktspesifikasjoner
+* *Standardmal.adoc*: Mal for standarder
+* *Lisensvilkår.adoc*: Lisenstekst for SOSI-standarder (NLOD-lisens)
+* *Språk-nb.adoc*: Fil som setter enkelte asciidoc-variable til bokmål
+* *Språk-nn.adoc*: Fil som setter enkelte asciidoc-variable til nynorsk
+* *modell.adoc*: Fil som kan brukes til modelldokumentasjon.
+* *images/epleblomst.jpg*:  Eksempelbilde
+//* *standard-theme.yml*: Fil som ordner deler av layout for pdf-generering av standarder
+//* *images/forsidebilde_kartverketstandarder.jpg*: Forsidebilde for pdf-versjon av standarder
+//* *images/Høringsversjon.png*: Vannmerke til bruk i høring
+
+=== Asciidoctor og Rouge
+Asciidoctor er verktøyet som benyttes til å generere html- og pdf-filer fra asciidoc-dokumenter. 
+
+==== Trinn 1: Installere Ruby
+For å installere Asciidoctor, må først Ruby installeres. Dette kan gjøres ved å gå til link:https://rubyinstaller.org/[^] og installere siste versjon av Ruby.
+
+==== Trinn 2: Installere Asciidoctor
+
+Etter at Ruby er installert, kan man bruke dette til å installere asciidoctor.  
+Åpne et kommandovindu på PC-en og skriv
+
+ gem install asciidoctor
+
+Dette vil installere asciidoctor html-generator på PC-en.
+
+[NOTE] 
+====
+Grunnet forandringer i enkelte variabelnavn i AsciiDoctor fungerer ikke malene som de skal med eldre versjoner av programmet.  Dersom du har en gammel versjon av AsciiDoctor, kan du oppgradere med kommandoen
+
+ gem update asciidoctor 
+====
+
+==== Tilleggstrinn: Installere Rouge
+
+Dersom du planlegger å inkludere programkode eller skjema i dokumentet kan det være fornuftig å installere en pakke for å utheve/farge nøkkelord og strukturer i koden. Rouge er en slik pakke som kan installeres på samme måte som asciidoctor:
+
+ gem install rouge
+
+=== AsciidocFX
+AsciidocFX er et verktøy som gjør det enklere å skrive asciidoc. Det kan installeres ved å gå til link:https://asciidocfx.com/[^], laste ned og installere siste versjon.
+
+Merk at andre verktøy som notepad, notepad++, emacs o.l. kan brukes til å skrive asciidoc, men AsciidoctorFX har funksjonalitet til å gi et samtidig inntrykk av hvordan det ferdige dokumentet vil se ut.
+
+=== Asciidoctor-web-pdf
+Dersom det er nødvendig å lage pdf-filer av dokumentene, anbefales det å bruke verktøyet asciidoctor-web-pdf.  Dette kan lastes ned fra link:https://github.com/Mogztter/asciidoctor-web-pdf/[^]. 
+
+[NOTE] 
+====
+Det finnes også en pdf-generator som heter asciidoctor-pdf, som kan installeres på samme måte som asciidoctor.
+
+Asciidoctor-pdf kan *ikke* generere UU-godkjente dokumenter, og skal derfor ikke brukes for dokumenter som skal publiseres på Kartverkets nettsider, det anbefales derfor å bruke asciidoctor-web-pdf i stedet.
+====
+
+[IMPORTANT] 
+====
+SOSI-standarder skal ikke lenger ha pdf-versjon, kun html.  Det er derfor ikke nødvendig å ha en pdf-generator dersom du skal lage en standard.
+
+Standardiseringssekretariatet kommer ikke til å tilby support for generering av pdf-dokumenter fra AsciiDoc.
+====
+
+=== Generering av html-filer
+For generering av html-versjon av dokumentet, åpne et kommandovindu og gå til katalogen der hoveddokumentet ligger. Dersom hoveddokumentet heter mittdokument.adoc, skriv
+
+ asciidoctor mittdokument.adoc
+
+Dette vil generere en html-versjon av dokumentet.
+
+Det er ofte slik at man ønsker et annet navn på det genererte dokumentet. Bruk flagget -o til å gi et annet navn på resultatfila.  Eksempelet under lager en fil som heter index.html fra asciidoc.
+
+ asciidoctor mittdokument.adoc -o index.html
+
+TIP: Dersom en fil i en katalog heter index.html, vil det være den filen en webbrowser vil vise dersom bare katalogsti er oppgitt.  Når en standard publiseres på Kartverkets sider, skal filen derfor ha navnet index.html.
+
+IMPORTANT: Ved publisering er det viktig å ha i bakhodet at bilder og lignende ressurser ikke er en integrert del av html-fila. Lokale ressurser må derfor publiseres sammen med dokumentet, og man bør passe på at ikke-lokale ressurser som man benytter seg av eller lenker til kan forventes å ha samme nettadresse gjennom dokumentets levetid.
+
+== Tips til bruk av malene
+Det er laget to maler, en til produktspesifikasjoner og standardiserte produktspesifikasjoner, og en til standarder som ikke er produktspesifikasjoner. Malene er laget slik at de skal kunne fungere over hele livsløpet til et dokument; fra den er et utkast, til godkjent dokument, til tilbaketrukket eller erstattet.
+
+Produktspesifikasjonsmalen er laget basert på tidligere Word-mal, og inneholder kapitteloverskriftene som er påkrevd i standarden link:https://register.geonorge.no/data/documents/sosi-standard-del-1-generell-del_SOSI%20produktspesifikasjoner%20%E2%80%93%20Krav%20og%20godkjenning_v1_sosi-produktspesifikasjoner-krav-og-godkjenning-5_0_.pdf[SOSI Generell del: SOSI Produktspesifikasjoner - Krav og godkjenning 5.0^].  Det er også kommentarer i malen som gir tips om utfylling.
+
+Standardmalen inneholder noen påkrevde kapitler, samt en del kapitler som er vanlige i fagområdestandarder.  Den inneholder også noen eksempler.
+
+=== Valg av vanlig eller standardisert produktspesifikasjon
+Siden den samme malen brukes til både vanlig og standardisert produktspesifikasjon, er det satt en variabel _produktspesifikasjonstype_ i starten av produktspesifikasjonsdokumentet.  Denne skal enten være VANLIG eller STANDARD. 
+
+ :produktspesifikasjonstype: VANLIG
+ 
+angir at det ikke er en standardisert produktspesifikasjon, mens
+
+ :produktspesifikasjonstype: STANDARD
+ 
+angir at det er en standardisert produktspesifikasjon.
+
+=== Variable for tittel
+I standardmalen og produktspesifikasjonsmalen (for produktspesifikasjonstype STANDARD) benyttes følgende variable, som må settes i dokumentet:
+
+* *standardtype* skal settes til typen standard, enten _SOSI Generell Del_, _SOSI Generell Objektkatalog_, _SOSI-standardisert produktspesifikasjon_ eller _Standarder Geografisk Informasjon_.
+* *standardtittel* er tittelen på standarden uten versjonsnummer.
+* *standardtittelURL* er tittelen på standarden uten versjonsnummer, men der mellomrom og spesialtegn er byttet ut med understrek (_). Denne benyttes til å sette opp nettadressen til standarden.
+* *standardversjon* er versjonsnummeret til standarden.
+* *erstattetversjon* er versjonsnummeret til tidligere versjon av standarden. Dersom det ikke er noen tidligere versjon, settes denne til 0.
+* *publikasjonsdato* er publikasjonsdatoen til standarden, gitt på formatet åååå-mm-dd.
+* *dokumentnivå* angir hvor i livsløpet dokumentet er. Denne settes til UTKAST, HØRING, TILGODKJENNING, GODKJENT, ERSTATTET eller TILBAKETRUKKET.
+
+Merk at noen variable, som *standardfulltittel*, genereres automatisk basert på innholdet i de andre variablene. 
+
+Eksempel på utfylling av variable:
+
+ :standardtype: SOSI Generell del
+ :standardtittel: Regler for UML-modellering
+ :standardtittelURL: Regler_for_UML-modellering
+ :standardversjon: 6.0
+ :erstattetversjon: 5.1
+ :publikasjonsdato: 2024-01-31
+ :dokumentnivå: UTKAST
+ 
+For ikke-standardiserte produktspesifikasjoner angir man variabelen *fulltittel* på formen _Produktspesifikasjon: <Fagområde>[<Leveranse>][<Målgruppe>]-<versjonsnummer>_. 
+
+// I tillegg kan man med en vanlig produktspesifikasjon ha et egenvalgt forsidebilde for PDF-versjonen av dokumentet (standarder skal bruke forsidebildet som ligger på images/forsidebilde_kartverketstandarder.jpg):
+
+ :fulltittel: Produktspesifikasjon: Hagebruk 2.0
+
+// :forsidebilde: images/epleblomst.jpg
+ 
+TIP: I produktspesifikasjonsmalen vil *dokumentnivå* og *publikasjonsdato* brukes for både standardisert og vanlig produktspesifikasjon. 
+
+=== URLer og filnavn
+
+Etter tittellinje og dokumentoppsett, er det plass til å sette opp nyttige URL'er som dokumentet bruker:
+
+* *standardurl* er URL til nyeste HTML-versjon standarden.  Denne skal genereres automatisk, og vil brukes i metadatablokken i starten av standarden.
+* *modellurl* er URL til HTML-versjon av modellen. Innen et beste-praksis-dokument beskriver hvor modellen skal plasseres, vil det være nødvendig med noe tilpassing
+// * *pdffilnavn* angir filnavn til pdf-versjonen av dokumentet.  Innen et beste-praksis-dokument beskriver hvordan filnavnet skal utformes, vil det være nødvendig med noe tilpassing.
+
+I tillegg er det to blokker med URL'er til skjema; en som benyttes til testversjon av skjemaene, en som benyttes til ferdig versjon av skjemaene. Hvilken av blokkene som benyttes bestemmes av variabelen *dokumentnivå*; for UTKAST, HØRING og TILGODKJENNING er det url til testversjon som benyttes, for GODKJENT, ERSTATTET og TILBAKETRUKKET er det den ferdige versjonen som benyttes
+
+URL'ene til skjemaene benyttes ikke direkte av malen og det er mulig å fjerne eller legge til flere slike URL'er etter behov.
+
+=== Modelldokumentasjon
+Standardiseringssekretariatet har laget et visual basic-script som kan kjøres i Enterprise Architect for å generere dokumentasjon i AsciiDoc-format fra en UML-modell.  Det forventes at slik dokumentasjon foreligger i produktspesifikasjoner og standarder som inneholder UML-modeller.
+Scriptet kan hentes ned fra link:https://github.com/kartverket/UML-modelleringsskript/blob/master/listAdocFraModell.vbs[Github^].
+
+For å bruke scriptet i EA (kort veiledning - kan variere avhengig EA-versjon):
+
+- Åpne fila der modellen er.
+- Åpne EAs scriptvindu (specialize -> scripting)
+- Lag en ny project browser scriptgruppe (som du kan kalle f.eks. AsciiDocScript)
+- Lag et nytt visual basic-script (som du kan kalle f.eks. listAdocFraModell)
+- Lim koden inn i scriptvinduet.
+- I prosjektbrowseren, velg modellens applikasjonsskjemakatalog, høyreklikk -> specialize -> scripts -> listAdocFraModell
+- Når scriptet er ferdig med å kjøre, kopier innholdet fra System Output-vinduet til filen modell.adoc, og kopier katalogen "diagrammer" fra området der du har EA prosjektfilen til området der du har asciidocdokumentene dine.
+
+== Skriving i AsciiDoc
+
+Merk:  Dette er et kort sammendrag over nyttige funksjoner.  For en mer fullstendig oversikt, anbefales det å gå til link:https://docs.asciidoctor.org/[^].
+
+=== Overskrifter
+
+Overskrifter i Asciidoc gjøres ved å sette ett eller flere erlik-tegn (=) foran overskriften. Antallet erlik-tegn avgjør hvilket nivå overskriften skal ha. Malene er utformet slik at kapitler har to erlik-tegn, delkapitler har tre erlik-tegn og seksjoner under dette har fire eller fler erlik-tegn.
+
+ == Dette er et kapittel
+ 
+ === Dette er et delkapittel
+ 
+ ==== Dette er en seksjon i et delkapittel.
+ 
+Malene er satt opp slik at de fire øverste nivåene blir nummerert og kommer med i innholdsfortegnelsen.  Dersom man bruker malene er det bare tittelen på dokumentet som skal ha ett erlik-tegn.
+
+Vedlegg markeres ved å skrive `[appendix]` i linja over kapitteloverskriften:
+
+ [appendix]
+ == Dette er et vedlegg.
+
+=== Figurer
+
+Bilder og figurer inkluderes i asciidoc ved kommandoen `image` og en sti til figuren. Figurtekst oppgis før figuren med et punktum foran. Alternativ tekst legges i hakeparenteser umiddelbart etter stien til bildet. Dersom den alternative teksten inneholder komma, må den stå i anførselstegn.
+
+ .Dette er en figur
+ image::images/figur.png["Alternativ tekst til figur"]
+
+For standarder og produktspesifikasjoner som skal publiseres på nettsidene til Kartverket eller Geonorge _skal_ det være en alternativ tekst til figurene.
+
+Det kan av og til være nyttig å la figurene være en lenke. Når det er en stor figur som er vanskelig å tyde i dokumentet kan det være en fordel å gi mulighet til enkelt å åpne figuren "for seg selv" i browseren så leseren kan zoome inn på detaljer.  Dette kan gjøres ved å legge +link=sti_til_lenke+ i hakeparentesene etter den alternative teksten.
+
+ .Dette er en figur
+ image::images/figur.png["Alternativ tekst til figur", link=images/figur.png]
+ 
+
+=== Tabeller
+
+Tabeller markeres med `|===` i starten i starten og slutten av tabellen, og cellene adskilles med tegnet `|`.  Før tabellen kan man angi tabellegenskaper i hakeparentes og tittel på tabell med punktum foran. Typiske tabellegenskaper det er vanlig å bruke er _cols_ som angir relativ bredde på kolonner og _options_ som angir opsjoner for tabellen.  Dersom _cols_ ikke er angitt, vil første raden i tabellen angi hvor mange kolonner tabellen har.
+
+ [cols="1,3", options="header"]
+ .Tabell over viktig innhold
+ |===
+ |kolonne1 |kolonne2
+ |innhold 1 | innhold 2
+ |===
+ 
+Vil gi følgende tabelloppsett:
+
+[cols="1,3", options="header"]
+.Tabell over viktig innhold
+|===
+|kolonne1 |kolonne2
+|innhold 1 | innhold 2
+|===
+
+=== Inkludering av deldokumenter
+
+Det kan noen ganger være ønskelig å dele dokumentet i mindre biter. Et dokument kan inkluderes ved å bruke kommandoen `include` med stien til deldokumentet:
+
+ include::deldokument.adoc[]
+ 
+Det er også muligheter til å inkludere andre filer enn asciidoc-filer, som innhold i tabeller i csv-format eller programkode.
+
+Eksempel:
+
+ [options="header", format=csv, separator=;]
+ |===
+ include::datatabell.csv[]
+ |===
+ 
+Koden over vil fylle en tabell med innholdet i en semikolonseparert csv-fil.
+
+==== Inkludering og farging av kode
+
+Ved inkludering av kode er det mulig å legge til fargekoding av nøkkelord.  For å få til dette må en tilleggspakke for code highlighting legges inn. Se <<_tilleggstrinn_installere_rouge>> for hvordan du kan legge til rouge, som er en slik pakke.  Malene er satt opp til at rouge skal benyttes til fargekoding.
+
+For å inkludere kode kan man inkludere det som en fil:
+
+ [source,xml]
+ ----
+ include::Mittskjema.xsd[] 
+ ----
+
+Det er også mulig å ha koden direkte i dokumentet:
+
+ [source,visualbasic]
+ ----
+ Private Sub Form_Load()
+     ' Execute a simple message box that says "Hello, World!"
+     MsgBox "Hello, World!"
+ End Sub
+ ----
+ 
+Asciidoctor med rouge vil gi følgende resultat for det som står over
+
+[source,visualbasic]
+----
+Private Sub Form_Load()
+    ' Execute a simple message box that says "Hello, World!"
+    MsgBox "Hello, World!"
+End Sub
+----
+
+IMPORTANT: AsciidocFX har innebygget verktøy for utheving av kode som virker _uavhengig_ av rouge. For å generere kodeutheving i dokumenter med asciidoctor må rouge være installert som beskrevet her.
+
+=== Lenking til eksterne ressurser
+
+Dersom man skriver en http(s)-url eller en mailadresse i vanlig tekst, vil asciidoctor gjøre det om til en klikkbar lenke.  For eksempel vil
+
+ https://www.kartverket.no/
+ standardiseringssekretariatet@kartverket.no
+ 
+gi resultatene https://www.kartverket.no og standardiseringssekretariatet@kartverket.no
+
+Dersom man ønsker å ha en annen tekst på linkene kan man benytte kommandoen `link` (for http(s)-url) eller `mailto` (for mailadresser):
+
+ link:https://www.kartverket.no/[Kartverkets hjemmeside]
+ mailto:standardiseringssekretariatet@kartverket.no[Send mail til Standardiseringssekretariatet]
+
+gir resultatene link:https://www.kartverket.no/[Kartverkets hjemmeside] og mailto:standardiseringssekretariatet@kartverket.no[Send mail til Standardiseringssekretariatet].
+
+Link kan også brukes til å angi relative adresser:
+
+ link:eksempler/eksempel1.html[Klikk her for dokumentet som forklarer det første eksempelet]
+ 
+Dersom man setter tegnet ^ (caret/"tom" cirkumfleks) etter linkteksten (eller alene i hakeparentesene dersom man ønsker at linkadressen skal stå slik den er), vil nettsiden åpne i ny fane:
+
+ link:https://www.kartverket.no/[Kartverkets hjemmeside^]
+ link:https://www.kartverket.no/[^]
+
+ 
+=== Kryssreferanser
+
+For å få laget en kryssreferanse må det eksistere en identifikator for stedet det skal refereres til.  Kryssreferansen genereres ved å sette identifikatoren i doble vinkelparenteser:
+
+ <<kryssreferanseidentifikator>>
+ 
+==== Automatisk generering av referansepunkter
+
+For kapitler og delkapitler genererer asciidoctor automatisk referansepunkter.  Disse vil ha en identifikator med samme navn som kapittelet, men med små bokstaver, ingen spesialtegn og _ som første tegn og skilletegn mellom ord.  F.eks. vil identifikatoren til dette kapittelet være
+
+ <<_kryssreferanser>>
+ 
+og referansen til kapitlet om <<_asciidoctor_og_rouge>> vil være
+
+ <<_asciidoctor_og_rouge>>
+
+IMPORTANT: AsciidocFX bruker et annet system for automatisk generering av kryssreferanser, så referanser som er riktige for Asciidoctor vil ikke se riktige ut i AsciidocFX.
+
+==== Manuell generering av referansepunkter
+
+Et manuelt generert referansepunkt kan settes opp slik:
+[#kryssreferanseidentifikator, reftext="tekst som vises når man refererer"]
+
+ [#kryssreferanseidentifikator, reftext="tekst som vises når man refererer"]
+ 
+Når man refererer med `+<<kryssreferanseidentifikator>>+`, vil teksten <<kryssreferanseidentifikator>> vises.
+
+=== Krav, anbefalinger og tillatelser
+
+Krav, anbefalinger og tillatelser kan skrives slik i AsciiDoc:
+
+ .Krav: krav/nøkkelord/skal
+ [#krav-nøkkelord-skal]
+ ====
+ Et krav skal inneholde nøkkelordet _"skal"_
+ ====
+
+.Krav: krav/nøkkelord/skal
+[#krav-nøkkelord-skal]
+====
+Et krav skal inneholde nøkkelordet _"Skal"_
+====
+
+En referanse (`+<<krav-nøkkelord-skal>>+`) vil se slik ut: <<krav-nøkkelord-skal>>
+
+NOTE: Malene bruker strukturen til eksempelboksene i AsciiDoc til krav, anbefalinger og tillatelser.
+
+=== Variable
+
+AsciiDoc har mulighet for å definere egne variable som kan skrives ut i teksten. Definisjon av variable gjøres slik:
+
+ :variabelnavn: verdi
+ 
+For å skrive ut variabelen, setter man variabelnavnet i krøllparenteser:
+
+ {variabelnavn}
+ 
+For eksempel, dersom man skriver
+
+ :minURL: https://www.kartverket.no/
+ Jeg synes {minURL} har mye interessant stoff.
+ 
+vil det se slik ut i dokumentet:
+
+:minURL: https://www.kartverket.no/
+Jeg synes {minURL} har mye interessant stoff.
+
+IMPORTANT: Noen variabelnavn er allerede i bruk av AsciiDoc og malene. 
+
+=== Matematikk
+
+Det finnes to systemer for å skrive matematikk i asciidoc, AsciiMath og LaTeX. Malene er satt opp til å bruke LaTeX som standard. Nøkkelordet "stem" står for science, technology, engineering and math.
+
+For å skrive matematikk i løpende tekst, bruk 
+
+ stem:[uttrykk]
+ 
+For eksempel, kan man skrive stem:[\binom{n}{k}=\frac{n!}{k!(n-k)!}] direkte i teksten slik: 
+
+ For eksempel, kan man skrive stem:[\binom{n}{k}=\frac{n!}{k!(n-k)!}] direkte i teksten slik
+
+Dersom man ønsker en egen blokk med matematikk, bruk
+
+ [stem]
+ ++++
+ uttrykk
+ ++++
+ 
+Eksempel
+
+[stem]
+++++
+\binom{n}{k}=\frac{n!}{k!(n-k)!}
+++++
+
+skrives slik
+
+ [stem]
+ ++++
+ \binom{n}{k}=\frac{n!}{k!(n-k)!}
+ ++++
+
+For nummererte ligninger, kapsler man inn ligningene i latexkommandoene begin{equation} og end{equation}.  Man kan referere til ligningene ved å utvide `[stem]` til `[stem#referanse, reftext=referansetekst]`. For eksempel vil
+
+ [stem#ligning, reftext=formel 1]
+ ++++
+ \begin{equation}
+ \binom{n}{k}=\frac{n!}{k!(n-k)!}
+ \end{equation}
+ ++++
+ 
+gi den nummererte ligningen
+
+[stem#ligning, reftext=formel 1]
+++++
+\begin{equation}
+\binom{n}{k}=\frac{n!}{k!(n-k)!}
+\end{equation}
+++++
+
+som kan refereres ved `+<<ligning>>+`. Referansen blir seende slik ut: <<ligning>>
+ 
+Dersom man ønsker å skrive en formel i asciimath bruker man nøkkelordet "asciimath" i stedet for "stem".
+
+TIP: AsciidocFX har en tendens til å bruke overdrevent stor font på matematikken. I dokumenter generert med Asciidoctor har matematikkfonten normal størrelse.  
+
+TIP: AsciidocFX vil også noen ganger vise referansepunkt i klammer i stedet for referansetekst, i dokumenter generert med Asciidoctor vises referanseteksten.
+

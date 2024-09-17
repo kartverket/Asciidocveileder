@@ -1,0 +1,1481 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.20">
+<meta name="author" content="Standardiseringssekretariatet">
+<title>Veileder for bruk av AsciiDoc til SOSI standarder og produktspesifikasjoner</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<style>
+/*! Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
+/* Uncomment the following line when using as a custom stylesheet */
+/* @import "https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700"; */
+html{font-family:sans-serif;-webkit-text-size-adjust:100%}
+a{background:none}
+a:focus{outline:thin dotted}
+a:active,a:hover{outline:0}
+h1{font-size:2em;margin:.67em 0}
+b,strong{font-weight:bold}
+abbr{font-size:.9em}
+abbr[title]{cursor:help;border-bottom:1px dotted #dddddf;text-decoration:none}
+dfn{font-style:italic}
+hr{height:0}
+mark{background:#ff0;color:#000}
+code,kbd,pre,samp{font-family:monospace;font-size:1em}
+pre{white-space:pre-wrap}
+q{quotes:"\201C" "\201D" "\2018" "\2019"}
+small{font-size:80%}
+sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}
+sup{top:-.5em}
+sub{bottom:-.25em}
+img{border:0}
+svg:not(:root){overflow:hidden}
+figure{margin:0}
+audio,video{display:inline-block}
+audio:not([controls]){display:none;height:0}
+fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}
+legend{border:0;padding:0}
+button,input,select,textarea{font-family:inherit;font-size:100%;margin:0}
+button,input{line-height:normal}
+button,select{text-transform:none}
+button,html input[type=button],input[type=reset],input[type=submit]{-webkit-appearance:button;cursor:pointer}
+button[disabled],html input[disabled]{cursor:default}
+input[type=checkbox],input[type=radio]{padding:0}
+button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}
+textarea{overflow:auto;vertical-align:top}
+table{border-collapse:collapse;border-spacing:0}
+*,::before,::after{box-sizing:border-box}
+html,body{font-size:100%}
+body{background:#fff;color:rgba(0,0,0,.8);padding:0;margin:0;font-family:"Noto Serif","DejaVu Serif",serif;line-height:1;position:relative;cursor:auto;-moz-tab-size:4;-o-tab-size:4;tab-size:4;word-wrap:anywhere;-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased}
+a:hover{cursor:pointer}
+img,object,embed{max-width:100%;height:auto}
+object,embed{height:100%}
+img{-ms-interpolation-mode:bicubic}
+.left{float:left!important}
+.right{float:right!important}
+.text-left{text-align:left!important}
+.text-right{text-align:right!important}
+.text-center{text-align:center!important}
+.text-justify{text-align:justify!important}
+.hide{display:none}
+img,object,svg{display:inline-block;vertical-align:middle}
+textarea{height:auto;min-height:50px}
+select{width:100%}
+.subheader,.admonitionblock td.content>.title,.audioblock>.title,.exampleblock>.title,.imageblock>.title,.listingblock>.title,.literalblock>.title,.stemblock>.title,.openblock>.title,.paragraph>.title,.quoteblock>.title,table.tableblock>.title,.verseblock>.title,.videoblock>.title,.dlist>.title,.olist>.title,.ulist>.title,.qlist>.title,.hdlist>.title{line-height:1.45;color:#7a2518;font-weight:400;margin-top:0;margin-bottom:.25em}
+div,dl,dt,dd,ul,ol,li,h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6,pre,form,p,blockquote,th,td{margin:0;padding:0}
+a{color:#2156a5;text-decoration:underline;line-height:inherit}
+a:hover,a:focus{color:#1d4b8f}
+a img{border:0}
+p{line-height:1.6;margin-bottom:1.25em;text-rendering:optimizeLegibility}
+p aside{font-size:.875em;line-height:1.35;font-style:italic}
+h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{font-family:"Open Sans","DejaVu Sans",sans-serif;font-weight:300;font-style:normal;color:#ba3925;text-rendering:optimizeLegibility;margin-top:1em;margin-bottom:.5em;line-height:1.0125em}
+h1 small,h2 small,h3 small,#toctitle small,.sidebarblock>.content>.title small,h4 small,h5 small,h6 small{font-size:60%;color:#e99b8f;line-height:0}
+h1{font-size:2.125em}
+h2{font-size:1.6875em}
+h3,#toctitle,.sidebarblock>.content>.title{font-size:1.375em}
+h4,h5{font-size:1.125em}
+h6{font-size:1em}
+hr{border:solid #dddddf;border-width:1px 0 0;clear:both;margin:1.25em 0 1.1875em}
+em,i{font-style:italic;line-height:inherit}
+strong,b{font-weight:bold;line-height:inherit}
+small{font-size:60%;line-height:inherit}
+code{font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;font-weight:400;color:rgba(0,0,0,.9)}
+ul,ol,dl{line-height:1.6;margin-bottom:1.25em;list-style-position:outside;font-family:inherit}
+ul,ol{margin-left:1.5em}
+ul li ul,ul li ol{margin-left:1.25em;margin-bottom:0}
+ul.circle{list-style-type:circle}
+ul.disc{list-style-type:disc}
+ul.square{list-style-type:square}
+ul.circle ul:not([class]),ul.disc ul:not([class]),ul.square ul:not([class]){list-style:inherit}
+ol li ul,ol li ol{margin-left:1.25em;margin-bottom:0}
+dl dt{margin-bottom:.3125em;font-weight:bold}
+dl dd{margin-bottom:1.25em}
+blockquote{margin:0 0 1.25em;padding:.5625em 1.25em 0 1.1875em;border-left:1px solid #ddd}
+blockquote,blockquote p{line-height:1.6;color:rgba(0,0,0,.85)}
+@media screen and (min-width:768px){h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{line-height:1.2}
+h1{font-size:2.75em}
+h2{font-size:2.3125em}
+h3,#toctitle,.sidebarblock>.content>.title{font-size:1.6875em}
+h4{font-size:1.4375em}}
+table{background:#fff;margin-bottom:1.25em;border:1px solid #dedede;word-wrap:normal}
+table thead,table tfoot{background:#f7f8f7}
+table thead tr th,table thead tr td,table tfoot tr th,table tfoot tr td{padding:.5em .625em .625em;font-size:inherit;color:rgba(0,0,0,.8);text-align:left}
+table tr th,table tr td{padding:.5625em .625em;font-size:inherit;color:rgba(0,0,0,.8)}
+table tr.even,table tr.alt{background:#f8f8f7}
+table thead tr th,table tfoot tr th,table tbody tr td,table tr td,table tfoot tr td{line-height:1.6}
+h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{line-height:1.2;word-spacing:-.05em}
+h1 strong,h2 strong,h3 strong,#toctitle strong,.sidebarblock>.content>.title strong,h4 strong,h5 strong,h6 strong{font-weight:400}
+.center{margin-left:auto;margin-right:auto}
+.stretch{width:100%}
+.clearfix::before,.clearfix::after,.float-group::before,.float-group::after{content:" ";display:table}
+.clearfix::after,.float-group::after{clear:both}
+:not(pre).nobreak{word-wrap:normal}
+:not(pre).nowrap{white-space:nowrap}
+:not(pre).pre-wrap{white-space:pre-wrap}
+:not(pre):not([class^=L])>code{font-size:.9375em;font-style:normal!important;letter-spacing:0;padding:.1em .5ex;word-spacing:-.15em;background:#f7f7f8;border-radius:4px;line-height:1.45;text-rendering:optimizeSpeed}
+pre{color:rgba(0,0,0,.9);font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;line-height:1.45;text-rendering:optimizeSpeed}
+pre code,pre pre{color:inherit;font-size:inherit;line-height:inherit}
+pre>code{display:block}
+pre.nowrap,pre.nowrap pre{white-space:pre;word-wrap:normal}
+em em{font-style:normal}
+strong strong{font-weight:400}
+.keyseq{color:rgba(51,51,51,.8)}
+kbd{font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;display:inline-block;color:rgba(0,0,0,.8);font-size:.65em;line-height:1.45;background:#f7f7f7;border:1px solid #ccc;border-radius:3px;box-shadow:0 1px 0 rgba(0,0,0,.2),inset 0 0 0 .1em #fff;margin:0 .15em;padding:.2em .5em;vertical-align:middle;position:relative;top:-.1em;white-space:nowrap}
+.keyseq kbd:first-child{margin-left:0}
+.keyseq kbd:last-child{margin-right:0}
+.menuseq,.menuref{color:#000}
+.menuseq b:not(.caret),.menuref{font-weight:inherit}
+.menuseq{word-spacing:-.02em}
+.menuseq b.caret{font-size:1.25em;line-height:.8}
+.menuseq i.caret{font-weight:bold;text-align:center;width:.45em}
+b.button::before,b.button::after{position:relative;top:-1px;font-weight:400}
+b.button::before{content:"[";padding:0 3px 0 2px}
+b.button::after{content:"]";padding:0 2px 0 3px}
+p a>code:hover{color:rgba(0,0,0,.9)}
+#header,#content,#footnotes,#footer{width:100%;margin:0 auto;max-width:62.5em;*zoom:1;position:relative;padding-left:.9375em;padding-right:.9375em}
+#header::before,#header::after,#content::before,#content::after,#footnotes::before,#footnotes::after,#footer::before,#footer::after{content:" ";display:table}
+#header::after,#content::after,#footnotes::after,#footer::after{clear:both}
+#content{margin-top:1.25em}
+#content::before{content:none}
+#header>h1:first-child{color:rgba(0,0,0,.85);margin-top:2.25rem;margin-bottom:0}
+#header>h1:first-child+#toc{margin-top:8px;border-top:1px solid #dddddf}
+#header>h1:only-child,body.toc2 #header>h1:nth-last-child(2){border-bottom:1px solid #dddddf;padding-bottom:8px}
+#header .details{border-bottom:1px solid #dddddf;line-height:1.45;padding-top:.25em;padding-bottom:.25em;padding-left:.25em;color:rgba(0,0,0,.6);display:flex;flex-flow:row wrap}
+#header .details span:first-child{margin-left:-.125em}
+#header .details span.email a{color:rgba(0,0,0,.85)}
+#header .details br{display:none}
+#header .details br+span::before{content:"\00a0\2013\00a0"}
+#header .details br+span.author::before{content:"\00a0\22c5\00a0";color:rgba(0,0,0,.85)}
+#header .details br+span#revremark::before{content:"\00a0|\00a0"}
+#header #revnumber{text-transform:capitalize}
+#header #revnumber::after{content:"\00a0"}
+#content>h1:first-child:not([class]){color:rgba(0,0,0,.85);border-bottom:1px solid #dddddf;padding-bottom:8px;margin-top:0;padding-top:1rem;margin-bottom:1.25rem}
+#toc{border-bottom:1px solid #e7e7e9;padding-bottom:.5em}
+#toc>ul{margin-left:.125em}
+#toc ul.sectlevel0>li>a{font-style:italic}
+#toc ul.sectlevel0 ul.sectlevel1{margin:.5em 0}
+#toc ul{font-family:"Open Sans","DejaVu Sans",sans-serif;list-style-type:none}
+#toc li{line-height:1.3334;margin-top:.3334em}
+#toc a{text-decoration:none}
+#toc a:active{text-decoration:underline}
+#toctitle{color:#7a2518;font-size:1.2em}
+@media screen and (min-width:768px){#toctitle{font-size:1.375em}
+body.toc2{padding-left:15em;padding-right:0}
+#toc.toc2{margin-top:0!important;background:#f8f8f7;position:fixed;width:15em;left:0;top:0;border-right:1px solid #e7e7e9;border-top-width:0!important;border-bottom-width:0!important;z-index:1000;padding:1.25em 1em;height:100%;overflow:auto}
+#toc.toc2 #toctitle{margin-top:0;margin-bottom:.8rem;font-size:1.2em}
+#toc.toc2>ul{font-size:.9em;margin-bottom:0}
+#toc.toc2 ul ul{margin-left:0;padding-left:1em}
+#toc.toc2 ul.sectlevel0 ul.sectlevel1{padding-left:0;margin-top:.5em;margin-bottom:.5em}
+body.toc2.toc-right{padding-left:0;padding-right:15em}
+body.toc2.toc-right #toc.toc2{border-right-width:0;border-left:1px solid #e7e7e9;left:auto;right:0}}
+@media screen and (min-width:1280px){body.toc2{padding-left:20em;padding-right:0}
+#toc.toc2{width:20em}
+#toc.toc2 #toctitle{font-size:1.375em}
+#toc.toc2>ul{font-size:.95em}
+#toc.toc2 ul ul{padding-left:1.25em}
+body.toc2.toc-right{padding-left:0;padding-right:20em}}
+#content #toc{border:1px solid #e0e0dc;margin-bottom:1.25em;padding:1.25em;background:#f8f8f7;border-radius:4px}
+#content #toc>:first-child{margin-top:0}
+#content #toc>:last-child{margin-bottom:0}
+#footer{max-width:none;background:rgba(0,0,0,.8);padding:1.25em}
+#footer-text{color:hsla(0,0%,100%,.8);line-height:1.44}
+#content{margin-bottom:.625em}
+.sect1{padding-bottom:.625em}
+@media screen and (min-width:768px){#content{margin-bottom:1.25em}
+.sect1{padding-bottom:1.25em}}
+.sect1:last-child{padding-bottom:0}
+.sect1+.sect1{border-top:1px solid #e7e7e9}
+#content h1>a.anchor,h2>a.anchor,h3>a.anchor,#toctitle>a.anchor,.sidebarblock>.content>.title>a.anchor,h4>a.anchor,h5>a.anchor,h6>a.anchor{position:absolute;z-index:1001;width:1.5ex;margin-left:-1.5ex;display:block;text-decoration:none!important;visibility:hidden;text-align:center;font-weight:400}
+#content h1>a.anchor::before,h2>a.anchor::before,h3>a.anchor::before,#toctitle>a.anchor::before,.sidebarblock>.content>.title>a.anchor::before,h4>a.anchor::before,h5>a.anchor::before,h6>a.anchor::before{content:"\00A7";font-size:.85em;display:block;padding-top:.1em}
+#content h1:hover>a.anchor,#content h1>a.anchor:hover,h2:hover>a.anchor,h2>a.anchor:hover,h3:hover>a.anchor,#toctitle:hover>a.anchor,.sidebarblock>.content>.title:hover>a.anchor,h3>a.anchor:hover,#toctitle>a.anchor:hover,.sidebarblock>.content>.title>a.anchor:hover,h4:hover>a.anchor,h4>a.anchor:hover,h5:hover>a.anchor,h5>a.anchor:hover,h6:hover>a.anchor,h6>a.anchor:hover{visibility:visible}
+#content h1>a.link,h2>a.link,h3>a.link,#toctitle>a.link,.sidebarblock>.content>.title>a.link,h4>a.link,h5>a.link,h6>a.link{color:#ba3925;text-decoration:none}
+#content h1>a.link:hover,h2>a.link:hover,h3>a.link:hover,#toctitle>a.link:hover,.sidebarblock>.content>.title>a.link:hover,h4>a.link:hover,h5>a.link:hover,h6>a.link:hover{color:#a53221}
+details,.audioblock,.imageblock,.literalblock,.listingblock,.stemblock,.videoblock{margin-bottom:1.25em}
+details{margin-left:1.25rem}
+details>summary{cursor:pointer;display:block;position:relative;line-height:1.6;margin-bottom:.625rem;outline:none;-webkit-tap-highlight-color:transparent}
+details>summary::-webkit-details-marker{display:none}
+details>summary::before{content:"";border:solid transparent;border-left:solid;border-width:.3em 0 .3em .5em;position:absolute;top:.5em;left:-1.25rem;transform:translateX(15%)}
+details[open]>summary::before{border:solid transparent;border-top:solid;border-width:.5em .3em 0;transform:translateY(15%)}
+details>summary::after{content:"";width:1.25rem;height:1em;position:absolute;top:.3em;left:-1.25rem}
+.admonitionblock td.content>.title,.audioblock>.title,.exampleblock>.title,.imageblock>.title,.listingblock>.title,.literalblock>.title,.stemblock>.title,.openblock>.title,.paragraph>.title,.quoteblock>.title,table.tableblock>.title,.verseblock>.title,.videoblock>.title,.dlist>.title,.olist>.title,.ulist>.title,.qlist>.title,.hdlist>.title{text-rendering:optimizeLegibility;text-align:left;font-family:"Noto Serif","DejaVu Serif",serif;font-size:1rem;font-style:italic}
+table.tableblock.fit-content>caption.title{white-space:nowrap;width:0}
+.paragraph.lead>p,#preamble>.sectionbody>[class=paragraph]:first-of-type p{font-size:1.21875em;line-height:1.6;color:rgba(0,0,0,.85)}
+.admonitionblock>table{border-collapse:separate;border:0;background:none;width:100%}
+.admonitionblock>table td.icon{text-align:center;width:80px}
+.admonitionblock>table td.icon img{max-width:none}
+.admonitionblock>table td.icon .title{font-weight:bold;font-family:"Open Sans","DejaVu Sans",sans-serif;text-transform:uppercase}
+.admonitionblock>table td.content{padding-left:1.125em;padding-right:1.25em;border-left:1px solid #dddddf;color:rgba(0,0,0,.6);word-wrap:anywhere}
+.admonitionblock>table td.content>:last-child>:last-child{margin-bottom:0}
+.exampleblock>.content{border:1px solid #e6e6e6;margin-bottom:1.25em;padding:1.25em;background:#fff;border-radius:4px}
+.sidebarblock{border:1px solid #dbdbd6;margin-bottom:1.25em;padding:1.25em;background:#f3f3f2;border-radius:4px}
+.sidebarblock>.content>.title{color:#7a2518;margin-top:0;text-align:center}
+.exampleblock>.content>:first-child,.sidebarblock>.content>:first-child{margin-top:0}
+.exampleblock>.content>:last-child,.exampleblock>.content>:last-child>:last-child,.exampleblock>.content .olist>ol>li:last-child>:last-child,.exampleblock>.content .ulist>ul>li:last-child>:last-child,.exampleblock>.content .qlist>ol>li:last-child>:last-child,.sidebarblock>.content>:last-child,.sidebarblock>.content>:last-child>:last-child,.sidebarblock>.content .olist>ol>li:last-child>:last-child,.sidebarblock>.content .ulist>ul>li:last-child>:last-child,.sidebarblock>.content .qlist>ol>li:last-child>:last-child{margin-bottom:0}
+.literalblock pre,.listingblock>.content>pre{border-radius:4px;overflow-x:auto;padding:1em;font-size:.8125em}
+@media screen and (min-width:768px){.literalblock pre,.listingblock>.content>pre{font-size:.90625em}}
+@media screen and (min-width:1280px){.literalblock pre,.listingblock>.content>pre{font-size:1em}}
+.literalblock pre,.listingblock>.content>pre:not(.highlight),.listingblock>.content>pre[class=highlight],.listingblock>.content>pre[class^="highlight "]{background:#f7f7f8}
+.literalblock.output pre{color:#f7f7f8;background:rgba(0,0,0,.9)}
+.listingblock>.content{position:relative}
+.listingblock code[data-lang]::before{display:none;content:attr(data-lang);position:absolute;font-size:.75em;top:.425rem;right:.5rem;line-height:1;text-transform:uppercase;color:inherit;opacity:.5}
+.listingblock:hover code[data-lang]::before{display:block}
+.listingblock.terminal pre .command::before{content:attr(data-prompt);padding-right:.5em;color:inherit;opacity:.5}
+.listingblock.terminal pre .command:not([data-prompt])::before{content:"$"}
+.listingblock pre.highlightjs{padding:0}
+.listingblock pre.highlightjs>code{padding:1em;border-radius:4px}
+.listingblock pre.prettyprint{border-width:0}
+.prettyprint{background:#f7f7f8}
+pre.prettyprint .linenums{line-height:1.45;margin-left:2em}
+pre.prettyprint li{background:none;list-style-type:inherit;padding-left:0}
+pre.prettyprint li code[data-lang]::before{opacity:1}
+pre.prettyprint li:not(:first-child) code[data-lang]::before{display:none}
+table.linenotable{border-collapse:separate;border:0;margin-bottom:0;background:none}
+table.linenotable td[class]{color:inherit;vertical-align:top;padding:0;line-height:inherit;white-space:normal}
+table.linenotable td.code{padding-left:.75em}
+table.linenotable td.linenos,pre.pygments .linenos{border-right:1px solid;opacity:.35;padding-right:.5em;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}
+pre.pygments span.linenos{display:inline-block;margin-right:.75em}
+.quoteblock{margin:0 1em 1.25em 1.5em;display:table}
+.quoteblock:not(.excerpt)>.title{margin-left:-1.5em;margin-bottom:.75em}
+.quoteblock blockquote,.quoteblock p{color:rgba(0,0,0,.85);font-size:1.15rem;line-height:1.75;word-spacing:.1em;letter-spacing:0;font-style:italic;text-align:justify}
+.quoteblock blockquote{margin:0;padding:0;border:0}
+.quoteblock blockquote::before{content:"\201c";float:left;font-size:2.75em;font-weight:bold;line-height:.6em;margin-left:-.6em;color:#7a2518;text-shadow:0 1px 2px rgba(0,0,0,.1)}
+.quoteblock blockquote>.paragraph:last-child p{margin-bottom:0}
+.quoteblock .attribution{margin-top:.75em;margin-right:.5ex;text-align:right}
+.verseblock{margin:0 1em 1.25em}
+.verseblock pre{font-family:"Open Sans","DejaVu Sans",sans-serif;font-size:1.15rem;color:rgba(0,0,0,.85);font-weight:300;text-rendering:optimizeLegibility}
+.verseblock pre strong{font-weight:400}
+.verseblock .attribution{margin-top:1.25rem;margin-left:.5ex}
+.quoteblock .attribution,.verseblock .attribution{font-size:.9375em;line-height:1.45;font-style:italic}
+.quoteblock .attribution br,.verseblock .attribution br{display:none}
+.quoteblock .attribution cite,.verseblock .attribution cite{display:block;letter-spacing:-.025em;color:rgba(0,0,0,.6)}
+.quoteblock.abstract blockquote::before,.quoteblock.excerpt blockquote::before,.quoteblock .quoteblock blockquote::before{display:none}
+.quoteblock.abstract blockquote,.quoteblock.abstract p,.quoteblock.excerpt blockquote,.quoteblock.excerpt p,.quoteblock .quoteblock blockquote,.quoteblock .quoteblock p{line-height:1.6;word-spacing:0}
+.quoteblock.abstract{margin:0 1em 1.25em;display:block}
+.quoteblock.abstract>.title{margin:0 0 .375em;font-size:1.15em;text-align:center}
+.quoteblock.excerpt>blockquote,.quoteblock .quoteblock{padding:0 0 .25em 1em;border-left:.25em solid #dddddf}
+.quoteblock.excerpt,.quoteblock .quoteblock{margin-left:0}
+.quoteblock.excerpt blockquote,.quoteblock.excerpt p,.quoteblock .quoteblock blockquote,.quoteblock .quoteblock p{color:inherit;font-size:1.0625rem}
+.quoteblock.excerpt .attribution,.quoteblock .quoteblock .attribution{color:inherit;font-size:.85rem;text-align:left;margin-right:0}
+p.tableblock:last-child{margin-bottom:0}
+td.tableblock>.content{margin-bottom:1.25em;word-wrap:anywhere}
+td.tableblock>.content>:last-child{margin-bottom:-1.25em}
+table.tableblock,th.tableblock,td.tableblock{border:0 solid #dedede}
+table.grid-all>*>tr>*{border-width:1px}
+table.grid-cols>*>tr>*{border-width:0 1px}
+table.grid-rows>*>tr>*{border-width:1px 0}
+table.frame-all{border-width:1px}
+table.frame-ends{border-width:1px 0}
+table.frame-sides{border-width:0 1px}
+table.frame-none>colgroup+*>:first-child>*,table.frame-sides>colgroup+*>:first-child>*{border-top-width:0}
+table.frame-none>:last-child>:last-child>*,table.frame-sides>:last-child>:last-child>*{border-bottom-width:0}
+table.frame-none>*>tr>:first-child,table.frame-ends>*>tr>:first-child{border-left-width:0}
+table.frame-none>*>tr>:last-child,table.frame-ends>*>tr>:last-child{border-right-width:0}
+table.stripes-all>*>tr,table.stripes-odd>*>tr:nth-of-type(odd),table.stripes-even>*>tr:nth-of-type(even),table.stripes-hover>*>tr:hover{background:#f8f8f7}
+th.halign-left,td.halign-left{text-align:left}
+th.halign-right,td.halign-right{text-align:right}
+th.halign-center,td.halign-center{text-align:center}
+th.valign-top,td.valign-top{vertical-align:top}
+th.valign-bottom,td.valign-bottom{vertical-align:bottom}
+th.valign-middle,td.valign-middle{vertical-align:middle}
+table thead th,table tfoot th{font-weight:bold}
+tbody tr th{background:#f7f8f7}
+tbody tr th,tbody tr th p,tfoot tr th,tfoot tr th p{color:rgba(0,0,0,.8);font-weight:bold}
+p.tableblock>code:only-child{background:none;padding:0}
+p.tableblock{font-size:1em}
+ol{margin-left:1.75em}
+ul li ol{margin-left:1.5em}
+dl dd{margin-left:1.125em}
+dl dd:last-child,dl dd:last-child>:last-child{margin-bottom:0}
+li p,ul dd,ol dd,.olist .olist,.ulist .ulist,.ulist .olist,.olist .ulist{margin-bottom:.625em}
+ul.checklist,ul.none,ol.none,ul.no-bullet,ol.no-bullet,ol.unnumbered,ul.unstyled,ol.unstyled{list-style-type:none}
+ul.no-bullet,ol.no-bullet,ol.unnumbered{margin-left:.625em}
+ul.unstyled,ol.unstyled{margin-left:0}
+li>p:empty:only-child::before{content:"";display:inline-block}
+ul.checklist>li>p:first-child{margin-left:-1em}
+ul.checklist>li>p:first-child>.fa-square-o:first-child,ul.checklist>li>p:first-child>.fa-check-square-o:first-child{width:1.25em;font-size:.8em;position:relative;bottom:.125em}
+ul.checklist>li>p:first-child>input[type=checkbox]:first-child{margin-right:.25em}
+ul.inline{display:flex;flex-flow:row wrap;list-style:none;margin:0 0 .625em -1.25em}
+ul.inline>li{margin-left:1.25em}
+.unstyled dl dt{font-weight:400;font-style:normal}
+ol.arabic{list-style-type:decimal}
+ol.decimal{list-style-type:decimal-leading-zero}
+ol.loweralpha{list-style-type:lower-alpha}
+ol.upperalpha{list-style-type:upper-alpha}
+ol.lowerroman{list-style-type:lower-roman}
+ol.upperroman{list-style-type:upper-roman}
+ol.lowergreek{list-style-type:lower-greek}
+.hdlist>table,.colist>table{border:0;background:none}
+.hdlist>table>tbody>tr,.colist>table>tbody>tr{background:none}
+td.hdlist1,td.hdlist2{vertical-align:top;padding:0 .625em}
+td.hdlist1{font-weight:bold;padding-bottom:1.25em}
+td.hdlist2{word-wrap:anywhere}
+.literalblock+.colist,.listingblock+.colist{margin-top:-.5em}
+.colist td:not([class]):first-child{padding:.4em .75em 0;line-height:1;vertical-align:top}
+.colist td:not([class]):first-child img{max-width:none}
+.colist td:not([class]):last-child{padding:.25em 0}
+.thumb,.th{line-height:0;display:inline-block;border:4px solid #fff;box-shadow:0 0 0 1px #ddd}
+.imageblock.left{margin:.25em .625em 1.25em 0}
+.imageblock.right{margin:.25em 0 1.25em .625em}
+.imageblock>.title{margin-bottom:0}
+.imageblock.thumb,.imageblock.th{border-width:6px}
+.imageblock.thumb>.title,.imageblock.th>.title{padding:0 .125em}
+.image.left,.image.right{margin-top:.25em;margin-bottom:.25em;display:inline-block;line-height:0}
+.image.left{margin-right:.625em}
+.image.right{margin-left:.625em}
+a.image{text-decoration:none;display:inline-block}
+a.image object{pointer-events:none}
+sup.footnote,sup.footnoteref{font-size:.875em;position:static;vertical-align:super}
+sup.footnote a,sup.footnoteref a{text-decoration:none}
+sup.footnote a:active,sup.footnoteref a:active{text-decoration:underline}
+#footnotes{padding-top:.75em;padding-bottom:.75em;margin-bottom:.625em}
+#footnotes hr{width:20%;min-width:6.25em;margin:-.25em 0 .75em;border-width:1px 0 0}
+#footnotes .footnote{padding:0 .375em 0 .225em;line-height:1.3334;font-size:.875em;margin-left:1.2em;margin-bottom:.2em}
+#footnotes .footnote a:first-of-type{font-weight:bold;text-decoration:none;margin-left:-1.05em}
+#footnotes .footnote:last-of-type{margin-bottom:0}
+#content #footnotes{margin-top:-.625em;margin-bottom:0;padding:.75em 0}
+div.unbreakable{page-break-inside:avoid}
+.big{font-size:larger}
+.small{font-size:smaller}
+.underline{text-decoration:underline}
+.overline{text-decoration:overline}
+.line-through{text-decoration:line-through}
+.aqua{color:#00bfbf}
+.aqua-background{background:#00fafa}
+.black{color:#000}
+.black-background{background:#000}
+.blue{color:#0000bf}
+.blue-background{background:#0000fa}
+.fuchsia{color:#bf00bf}
+.fuchsia-background{background:#fa00fa}
+.gray{color:#606060}
+.gray-background{background:#7d7d7d}
+.green{color:#006000}
+.green-background{background:#007d00}
+.lime{color:#00bf00}
+.lime-background{background:#00fa00}
+.maroon{color:#600000}
+.maroon-background{background:#7d0000}
+.navy{color:#000060}
+.navy-background{background:#00007d}
+.olive{color:#606000}
+.olive-background{background:#7d7d00}
+.purple{color:#600060}
+.purple-background{background:#7d007d}
+.red{color:#bf0000}
+.red-background{background:#fa0000}
+.silver{color:#909090}
+.silver-background{background:#bcbcbc}
+.teal{color:#006060}
+.teal-background{background:#007d7d}
+.white{color:#bfbfbf}
+.white-background{background:#fafafa}
+.yellow{color:#bfbf00}
+.yellow-background{background:#fafa00}
+span.icon>.fa{cursor:default}
+a span.icon>.fa{cursor:inherit}
+.admonitionblock td.icon [class^="fa icon-"]{font-size:2.5em;text-shadow:1px 1px 2px rgba(0,0,0,.5);cursor:default}
+.admonitionblock td.icon .icon-note::before{content:"\f05a";color:#19407c}
+.admonitionblock td.icon .icon-tip::before{content:"\f0eb";text-shadow:1px 1px 2px rgba(155,155,0,.8);color:#111}
+.admonitionblock td.icon .icon-warning::before{content:"\f071";color:#bf6900}
+.admonitionblock td.icon .icon-caution::before{content:"\f06d";color:#bf3400}
+.admonitionblock td.icon .icon-important::before{content:"\f06a";color:#bf0000}
+.conum[data-value]{display:inline-block;color:#fff!important;background:rgba(0,0,0,.8);border-radius:50%;text-align:center;font-size:.75em;width:1.67em;height:1.67em;line-height:1.67em;font-family:"Open Sans","DejaVu Sans",sans-serif;font-style:normal;font-weight:bold}
+.conum[data-value] *{color:#fff!important}
+.conum[data-value]+b{display:none}
+.conum[data-value]::after{content:attr(data-value)}
+pre .conum[data-value]{position:relative;top:-.125em}
+b.conum *{color:inherit!important}
+.conum:not([data-value]):empty{display:none}
+dt,th.tableblock,td.content,div.footnote{text-rendering:optimizeLegibility}
+h1,h2,p,td.content,span.alt,summary{letter-spacing:-.01em}
+p strong,td.content strong,div.footnote strong{letter-spacing:-.005em}
+p,blockquote,dt,td.content,td.hdlist1,span.alt,summary{font-size:1.0625rem}
+p{margin-bottom:1.25rem}
+.sidebarblock p,.sidebarblock dt,.sidebarblock td.content,p.tableblock{font-size:1em}
+.exampleblock>.content{background:#fffef7;border-color:#e0e0dc;box-shadow:0 1px 4px #e0e0dc}
+.print-only{display:none!important}
+@page{margin:1.25cm .75cm}
+@media print{*{box-shadow:none!important;text-shadow:none!important}
+html{font-size:80%}
+a{color:inherit!important;text-decoration:underline!important}
+a.bare,a[href^="#"],a[href^="mailto:"]{text-decoration:none!important}
+a[href^="http:"]:not(.bare)::after,a[href^="https:"]:not(.bare)::after{content:"(" attr(href) ")";display:inline-block;font-size:.875em;padding-left:.25em}
+abbr[title]{border-bottom:1px dotted}
+abbr[title]::after{content:" (" attr(title) ")"}
+pre,blockquote,tr,img,object,svg{page-break-inside:avoid}
+thead{display:table-header-group}
+svg{max-width:100%}
+p,blockquote,dt,td.content{font-size:1em;orphans:3;widows:3}
+h2,h3,#toctitle,.sidebarblock>.content>.title{page-break-after:avoid}
+#header,#content,#footnotes,#footer{max-width:none}
+#toc,.sidebarblock,.exampleblock>.content{background:none!important}
+#toc{border-bottom:1px solid #dddddf!important;padding-bottom:0!important}
+body.book #header{text-align:center}
+body.book #header>h1:first-child{border:0!important;margin:2.5em 0 1em}
+body.book #header .details{border:0!important;display:block;padding:0!important}
+body.book #header .details span:first-child{margin-left:0!important}
+body.book #header .details br{display:block}
+body.book #header .details br+span::before{content:none!important}
+body.book #toc{border:0!important;text-align:left!important;padding:0!important;margin:0!important}
+body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-break-before:always}
+.listingblock code[data-lang]::before{display:block}
+#footer{padding:0 .9375em}
+.hide-on-print{display:none!important}
+.print-only{display:block!important}
+.hide-for-print{display:none!important}
+.show-for-print{display:inherit!important}}
+@media amzn-kf8,print{#header>h1:first-child{margin-top:1.25rem}
+.sect1{padding:0!important}
+.sect1+.sect1{border:0}
+#footer{background:none}
+#footer-text{color:rgba(0,0,0,.6);font-size:.9em}}
+@media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+pre.rouge table td { padding: 5px; }
+pre.rouge table pre { margin: 0; }
+pre.rouge, pre.rouge .w {
+  color: #24292f;
+  background-color: #f6f8fa;
+}
+pre.rouge .k, pre.rouge .kd, pre.rouge .kn, pre.rouge .kp, pre.rouge .kr, pre.rouge .kt, pre.rouge .kv {
+  color: #cf222e;
+}
+pre.rouge .gr {
+  color: #f6f8fa;
+}
+pre.rouge .gd {
+  color: #82071e;
+  background-color: #ffebe9;
+}
+pre.rouge .nb {
+  color: #953800;
+}
+pre.rouge .nc {
+  color: #953800;
+}
+pre.rouge .no {
+  color: #953800;
+}
+pre.rouge .nn {
+  color: #953800;
+}
+pre.rouge .sr {
+  color: #116329;
+}
+pre.rouge .na {
+  color: #116329;
+}
+pre.rouge .nt {
+  color: #116329;
+}
+pre.rouge .gi {
+  color: #116329;
+  background-color: #dafbe1;
+}
+pre.rouge .kc {
+  color: #0550ae;
+}
+pre.rouge .l, pre.rouge .ld, pre.rouge .m, pre.rouge .mb, pre.rouge .mf, pre.rouge .mh, pre.rouge .mi, pre.rouge .il, pre.rouge .mo, pre.rouge .mx {
+  color: #0550ae;
+}
+pre.rouge .sb {
+  color: #0550ae;
+}
+pre.rouge .bp {
+  color: #0550ae;
+}
+pre.rouge .ne {
+  color: #0550ae;
+}
+pre.rouge .nl {
+  color: #0550ae;
+}
+pre.rouge .py {
+  color: #0550ae;
+}
+pre.rouge .nv, pre.rouge .vc, pre.rouge .vg, pre.rouge .vi, pre.rouge .vm {
+  color: #0550ae;
+}
+pre.rouge .o, pre.rouge .ow {
+  color: #0550ae;
+}
+pre.rouge .gh {
+  color: #0550ae;
+  font-weight: bold;
+}
+pre.rouge .gu {
+  color: #0550ae;
+  font-weight: bold;
+}
+pre.rouge .s, pre.rouge .sa, pre.rouge .sc, pre.rouge .dl, pre.rouge .sd, pre.rouge .s2, pre.rouge .se, pre.rouge .sh, pre.rouge .sx, pre.rouge .s1, pre.rouge .ss {
+  color: #0a3069;
+}
+pre.rouge .nd {
+  color: #8250df;
+}
+pre.rouge .nf, pre.rouge .fm {
+  color: #8250df;
+}
+pre.rouge .err {
+  color: #f6f8fa;
+  background-color: #82071e;
+}
+pre.rouge .c, pre.rouge .ch, pre.rouge .cd, pre.rouge .cm, pre.rouge .cp, pre.rouge .cpf, pre.rouge .c1, pre.rouge .cs {
+  color: #6e7781;
+}
+pre.rouge .gl {
+  color: #6e7781;
+}
+pre.rouge .gt {
+  color: #6e7781;
+}
+pre.rouge .ni {
+  color: #24292f;
+}
+pre.rouge .si {
+  color: #24292f;
+}
+pre.rouge .ge {
+  color: #24292f;
+  font-style: italic;
+}
+pre.rouge .gs {
+  color: #24292f;
+  font-weight: bold;
+}
+</style>
+</head>
+<body class="article toc2 toc-left">
+<div id="header">
+<h1>Veileder for bruk av AsciiDoc til SOSI standarder og produktspesifikasjoner</h1>
+<div class="details">
+<span id="author" class="author">Standardiseringssekretariatet</span><br>
+<span id="email" class="email"><a href="mailto:standardiseringssekretariatet@kartverket.no">standardiseringssekretariatet@kartverket.no</a></span><br>
+</div>
+<div id="toc" class="toc2">
+<div id="toctitle">Innhold</div>
+<ul class="sectlevel1">
+<li><a href="#_verktøy_og_maler">1. Verktøy og maler</a>
+<ul class="sectlevel2">
+<li><a href="#_maler_for_standarder_og_produktspesifikasjoner">1.1. Maler for standarder og produktspesifikasjoner</a></li>
+<li><a href="#_asciidoctor_og_rouge">1.2. Asciidoctor og Rouge</a>
+<ul class="sectlevel3">
+<li><a href="#_trinn_1_installere_ruby">1.2.1. Trinn 1: Installere Ruby</a></li>
+<li><a href="#_trinn_2_installere_asciidoctor">1.2.2. Trinn 2: Installere Asciidoctor</a></li>
+<li><a href="#_tilleggstrinn_installere_rouge">1.2.3. Tilleggstrinn: Installere Rouge</a></li>
+</ul>
+</li>
+<li><a href="#_asciidocfx">1.3. AsciidocFX</a></li>
+<li><a href="#_asciidoctor_web_pdf">1.4. Asciidoctor-web-pdf</a></li>
+<li><a href="#_generering_av_html_filer">1.5. Generering av html-filer</a></li>
+</ul>
+</li>
+<li><a href="#_tips_til_bruk_av_malene">2. Tips til bruk av malene</a>
+<ul class="sectlevel2">
+<li><a href="#_valg_av_vanlig_eller_standardisert_produktspesifikasjon">2.1. Valg av vanlig eller standardisert produktspesifikasjon</a></li>
+<li><a href="#_variable_for_tittel">2.2. Variable for tittel</a></li>
+<li><a href="#_urler_og_filnavn">2.3. URLer og filnavn</a></li>
+<li><a href="#_modelldokumentasjon">2.4. Modelldokumentasjon</a></li>
+</ul>
+</li>
+<li><a href="#_skriving_i_asciidoc">3. Skriving i AsciiDoc</a>
+<ul class="sectlevel2">
+<li><a href="#_overskrifter">3.1. Overskrifter</a></li>
+<li><a href="#_figurer">3.2. Figurer</a></li>
+<li><a href="#_tabeller">3.3. Tabeller</a></li>
+<li><a href="#_inkludering_av_deldokumenter">3.4. Inkludering av deldokumenter</a>
+<ul class="sectlevel3">
+<li><a href="#_inkludering_og_farging_av_kode">3.4.1. Inkludering og farging av kode</a></li>
+</ul>
+</li>
+<li><a href="#_lenking_til_eksterne_ressurser">3.5. Lenking til eksterne ressurser</a></li>
+<li><a href="#_kryssreferanser">3.6. Kryssreferanser</a>
+<ul class="sectlevel3">
+<li><a href="#_automatisk_generering_av_referansepunkter">3.6.1. Automatisk generering av referansepunkter</a></li>
+<li><a href="#_manuell_generering_av_referansepunkter">3.6.2. Manuell generering av referansepunkter</a></li>
+</ul>
+</li>
+<li><a href="#_krav_anbefalinger_og_tillatelser">3.7. Krav, anbefalinger og tillatelser</a></li>
+<li><a href="#_variable">3.8. Variable</a></li>
+<li><a href="#_matematikk">3.9. Matematikk</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Dette dokumentet er ment som en introduksjon og veileder til de som skal lage produktspesifikasjoner eller standarder i AsciiDoc.</p>
+</div>
+<div class="paragraph">
+<p>For en mer fullstendig gjennomgang av funksjonalitet i AsciiDoc, anbefales det å gå til <a href="https://docs.asciidoctor.org/" target="_blank" rel="noopener">Asciidoctor Documentation Site</a>.</p>
+</div>
+<div class="paragraph">
+<p>Dersom det er informasjon i dette dokumentet som er feil eller utdatert, eller dersom det er funksjonalitet i AsciiDoc som du mener bør være en del av denne veilederen, ta kontakt med <a href="mailto:standardiseringssekretariatet@kartverket.no">Standardiseringssekretariatet</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_verktøy_og_maler">1. Verktøy og maler</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_maler_for_standarder_og_produktspesifikasjoner">1.1. Maler for standarder og produktspesifikasjoner</h3>
+<div class="paragraph">
+<p>Malene for standarder og produktspesifikasjonsmaler ligger på <a href="https://www.geonorge.no/globalassets/geonorge2/standardisering/maler/asciidocmaler.zip" target="_blank" rel="noopener">Geonorge</a>.</p>
+</div>
+<div class="paragraph">
+<p>Zip-fila skal inneholde følgende filer:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Produktspesifikasjonsmal.adoc</strong>: Mal for produktspesifikasjoner og standardiserte produktspesifikasjoner</p>
+</li>
+<li>
+<p><strong>Standardmal.adoc</strong>: Mal for standarder</p>
+</li>
+<li>
+<p><strong>Lisensvilkår.adoc</strong>: Lisenstekst for SOSI-standarder (NLOD-lisens)</p>
+</li>
+<li>
+<p><strong>Språk-nb.adoc</strong>: Fil som setter enkelte asciidoc-variable til bokmål</p>
+</li>
+<li>
+<p><strong>Språk-nn.adoc</strong>: Fil som setter enkelte asciidoc-variable til nynorsk</p>
+</li>
+<li>
+<p><strong>modell.adoc</strong>: Fil som kan brukes til modelldokumentasjon.</p>
+</li>
+<li>
+<p><strong>images/epleblomst.jpg</strong>:  Eksempelbilde</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_asciidoctor_og_rouge">1.2. Asciidoctor og Rouge</h3>
+<div class="paragraph">
+<p>Asciidoctor er verktøyet som benyttes til å generere html- og pdf-filer fra asciidoc-dokumenter.</p>
+</div>
+<div class="sect3">
+<h4 id="_trinn_1_installere_ruby">1.2.1. Trinn 1: Installere Ruby</h4>
+<div class="paragraph">
+<p>For å installere Asciidoctor, må først Ruby installeres. Dette kan gjøres ved å gå til <a href="https://rubyinstaller.org/" class="bare" target="_blank" rel="noopener">https://rubyinstaller.org/</a> og installere siste versjon av Ruby.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_trinn_2_installere_asciidoctor">1.2.2. Trinn 2: Installere Asciidoctor</h4>
+<div class="paragraph">
+<p>Etter at Ruby er installert, kan man bruke dette til å installere asciidoctor.
+Åpne et kommandovindu på PC-en og skriv</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>gem install asciidoctor</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Dette vil installere asciidoctor html-generator på PC-en.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Merk"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Grunnet forandringer i enkelte variabelnavn i AsciiDoctor fungerer ikke malene som de skal med eldre versjoner av programmet.  Dersom du har en gammel versjon av AsciiDoctor, kan du oppgradere med kommandoen</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>gem update asciidoctor</pre>
+</div>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_tilleggstrinn_installere_rouge">1.2.3. Tilleggstrinn: Installere Rouge</h4>
+<div class="paragraph">
+<p>Dersom du planlegger å inkludere programkode eller skjema i dokumentet kan det være fornuftig å installere en pakke for å utheve/farge nøkkelord og strukturer i koden. Rouge er en slik pakke som kan installeres på samme måte som asciidoctor:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>gem install rouge</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_asciidocfx">1.3. AsciidocFX</h3>
+<div class="paragraph">
+<p>AsciidocFX er et verktøy som gjør det enklere å skrive asciidoc. Det kan installeres ved å gå til <a href="https://asciidocfx.com/" class="bare" target="_blank" rel="noopener">https://asciidocfx.com/</a>, laste ned og installere siste versjon.</p>
+</div>
+<div class="paragraph">
+<p>Merk at andre verktøy som notepad, notepad++, emacs o.l. kan brukes til å skrive asciidoc, men AsciidoctorFX har funksjonalitet til å gi et samtidig inntrykk av hvordan det ferdige dokumentet vil se ut.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_asciidoctor_web_pdf">1.4. Asciidoctor-web-pdf</h3>
+<div class="paragraph">
+<p>Dersom det er nødvendig å lage pdf-filer av dokumentene, anbefales det å bruke verktøyet asciidoctor-web-pdf.  Dette kan lastes ned fra <a href="https://github.com/Mogztter/asciidoctor-web-pdf/" class="bare" target="_blank" rel="noopener">https://github.com/Mogztter/asciidoctor-web-pdf/</a>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Merk"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Det finnes også en pdf-generator som heter asciidoctor-pdf, som kan installeres på samme måte som asciidoctor.</p>
+</div>
+<div class="paragraph">
+<p>Asciidoctor-pdf kan <strong>ikke</strong> generere UU-godkjente dokumenter, og skal derfor ikke brukes for dokumenter som skal publiseres på Kartverkets nettsider, det anbefales derfor å bruke asciidoctor-web-pdf i stedet.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Viktig"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>SOSI-standarder skal ikke lenger ha pdf-versjon, kun html.  Det er derfor ikke nødvendig å ha en pdf-generator dersom du skal lage en standard.</p>
+</div>
+<div class="paragraph">
+<p>Standardiseringssekretariatet kommer ikke til å tilby support for generering av pdf-dokumenter fra AsciiDoc.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_generering_av_html_filer">1.5. Generering av html-filer</h3>
+<div class="paragraph">
+<p>For generering av html-versjon av dokumentet, åpne et kommandovindu og gå til katalogen der hoveddokumentet ligger. Dersom hoveddokumentet heter mittdokument.adoc, skriv</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>asciidoctor mittdokument.adoc</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Dette vil generere en html-versjon av dokumentet.</p>
+</div>
+<div class="paragraph">
+<p>Det er ofte slik at man ønsker et annet navn på det genererte dokumentet. Bruk flagget -o til å gi et annet navn på resultatfila.  Eksempelet under lager en fil som heter index.html fra asciidoc.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>asciidoctor mittdokument.adoc -o index.html</pre>
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tips"></i>
+</td>
+<td class="content">
+Dersom en fil i en katalog heter index.html, vil det være den filen en webbrowser vil vise dersom bare katalogsti er oppgitt.  Når en standard publiseres på Kartverkets sider, skal filen derfor ha navnet index.html.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Viktig"></i>
+</td>
+<td class="content">
+Ved publisering er det viktig å ha i bakhodet at bilder og lignende ressurser ikke er en integrert del av html-fila. Lokale ressurser må derfor publiseres sammen med dokumentet, og man bør passe på at ikke-lokale ressurser som man benytter seg av eller lenker til kan forventes å ha samme nettadresse gjennom dokumentets levetid.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_tips_til_bruk_av_malene">2. Tips til bruk av malene</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Det er laget to maler, en til produktspesifikasjoner og standardiserte produktspesifikasjoner, og en til standarder som ikke er produktspesifikasjoner. Malene er laget slik at de skal kunne fungere over hele livsløpet til et dokument; fra den er et utkast, til godkjent dokument, til tilbaketrukket eller erstattet.</p>
+</div>
+<div class="paragraph">
+<p>Produktspesifikasjonsmalen er laget basert på tidligere Word-mal, og inneholder kapitteloverskriftene som er påkrevd i standarden <a href="https://register.geonorge.no/data/documents/sosi-standard-del-1-generell-del_SOSI%20produktspesifikasjoner%20%E2%80%93%20Krav%20og%20godkjenning_v1_sosi-produktspesifikasjoner-krav-og-godkjenning-5_0_.pdf" target="_blank" rel="noopener">SOSI Generell del: SOSI Produktspesifikasjoner - Krav og godkjenning 5.0</a>.  Det er også kommentarer i malen som gir tips om utfylling.</p>
+</div>
+<div class="paragraph">
+<p>Standardmalen inneholder noen påkrevde kapitler, samt en del kapitler som er vanlige i fagområdestandarder.  Den inneholder også noen eksempler.</p>
+</div>
+<div class="sect2">
+<h3 id="_valg_av_vanlig_eller_standardisert_produktspesifikasjon">2.1. Valg av vanlig eller standardisert produktspesifikasjon</h3>
+<div class="paragraph">
+<p>Siden den samme malen brukes til både vanlig og standardisert produktspesifikasjon, er det satt en variabel <em>produktspesifikasjonstype</em> i starten av produktspesifikasjonsdokumentet.  Denne skal enten være VANLIG eller STANDARD.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>:produktspesifikasjonstype: VANLIG</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>angir at det ikke er en standardisert produktspesifikasjon, mens</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>:produktspesifikasjonstype: STANDARD</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>angir at det er en standardisert produktspesifikasjon.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_variable_for_tittel">2.2. Variable for tittel</h3>
+<div class="paragraph">
+<p>I standardmalen og produktspesifikasjonsmalen (for produktspesifikasjonstype STANDARD) benyttes følgende variable, som må settes i dokumentet:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>standardtype</strong> skal settes til typen standard, enten <em>SOSI Generell Del</em>, <em>SOSI Generell Objektkatalog</em>, <em>SOSI-standardisert produktspesifikasjon</em> eller <em>Standarder Geografisk Informasjon</em>.</p>
+</li>
+<li>
+<p><strong>standardtittel</strong> er tittelen på standarden uten versjonsnummer.</p>
+</li>
+<li>
+<p><strong>standardtittelURL</strong> er tittelen på standarden uten versjonsnummer, men der mellomrom og spesialtegn er byttet ut med understrek (_). Denne benyttes til å sette opp nettadressen til standarden.</p>
+</li>
+<li>
+<p><strong>standardversjon</strong> er versjonsnummeret til standarden.</p>
+</li>
+<li>
+<p><strong>erstattetversjon</strong> er versjonsnummeret til tidligere versjon av standarden. Dersom det ikke er noen tidligere versjon, settes denne til 0.</p>
+</li>
+<li>
+<p><strong>publikasjonsdato</strong> er publikasjonsdatoen til standarden, gitt på formatet åååå-mm-dd.</p>
+</li>
+<li>
+<p><strong>dokumentnivå</strong> angir hvor i livsløpet dokumentet er. Denne settes til UTKAST, HØRING, TILGODKJENNING, GODKJENT, ERSTATTET eller TILBAKETRUKKET.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Merk at noen variable, som <strong>standardfulltittel</strong>, genereres automatisk basert på innholdet i de andre variablene.</p>
+</div>
+<div class="paragraph">
+<p>Eksempel på utfylling av variable:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>:standardtype: SOSI Generell del
+:standardtittel: Regler for UML-modellering
+:standardtittelURL: Regler_for_UML-modellering
+:standardversjon: 6.0
+:erstattetversjon: 5.1
+:publikasjonsdato: 2024-01-31
+:dokumentnivå: UTKAST</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For ikke-standardiserte produktspesifikasjoner angir man variabelen <strong>fulltittel</strong> på formen <em>Produktspesifikasjon: &lt;Fagområde&gt;[&lt;Leveranse&gt;][&lt;Målgruppe&gt;]-&lt;versjonsnummer&gt;</em>.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>:fulltittel: Produktspesifikasjon: Hagebruk 2.0</pre>
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tips"></i>
+</td>
+<td class="content">
+I produktspesifikasjonsmalen vil <strong>dokumentnivå</strong> og <strong>publikasjonsdato</strong> brukes for både standardisert og vanlig produktspesifikasjon.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_urler_og_filnavn">2.3. URLer og filnavn</h3>
+<div class="paragraph">
+<p>Etter tittellinje og dokumentoppsett, er det plass til å sette opp nyttige URL&#8217;er som dokumentet bruker:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>standardurl</strong> er URL til nyeste HTML-versjon standarden.  Denne skal genereres automatisk, og vil brukes i metadatablokken i starten av standarden.</p>
+</li>
+<li>
+<p><strong>modellurl</strong> er URL til HTML-versjon av modellen. Innen et beste-praksis-dokument beskriver hvor modellen skal plasseres, vil det være nødvendig med noe tilpassing</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>I tillegg er det to blokker med URL&#8217;er til skjema; en som benyttes til testversjon av skjemaene, en som benyttes til ferdig versjon av skjemaene. Hvilken av blokkene som benyttes bestemmes av variabelen <strong>dokumentnivå</strong>; for UTKAST, HØRING og TILGODKJENNING er det url til testversjon som benyttes, for GODKJENT, ERSTATTET og TILBAKETRUKKET er det den ferdige versjonen som benyttes</p>
+</div>
+<div class="paragraph">
+<p>URL&#8217;ene til skjemaene benyttes ikke direkte av malen og det er mulig å fjerne eller legge til flere slike URL&#8217;er etter behov.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_modelldokumentasjon">2.4. Modelldokumentasjon</h3>
+<div class="paragraph">
+<p>Standardiseringssekretariatet har laget et visual basic-script som kan kjøres i Enterprise Architect for å generere dokumentasjon i AsciiDoc-format fra en UML-modell.  Det forventes at slik dokumentasjon foreligger i produktspesifikasjoner og standarder som inneholder UML-modeller.
+Scriptet kan hentes ned fra <a href="https://github.com/kartverket/UML-modelleringsskript/blob/master/listAdocFraModell.vbs" target="_blank" rel="noopener">Github</a>.</p>
+</div>
+<div class="paragraph">
+<p>For å bruke scriptet i EA (kort veiledning - kan variere avhengig EA-versjon):</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Åpne fila der modellen er.</p>
+</li>
+<li>
+<p>Åpne EAs scriptvindu (specialize &#8594; scripting)</p>
+</li>
+<li>
+<p>Lag en ny project browser scriptgruppe (som du kan kalle f.eks. AsciiDocScript)</p>
+</li>
+<li>
+<p>Lag et nytt visual basic-script (som du kan kalle f.eks. listAdocFraModell)</p>
+</li>
+<li>
+<p>Lim koden inn i scriptvinduet.</p>
+</li>
+<li>
+<p>I prosjektbrowseren, velg modellens applikasjonsskjemakatalog, høyreklikk &#8594; specialize &#8594; scripts &#8594; listAdocFraModell</p>
+</li>
+<li>
+<p>Når scriptet er ferdig med å kjøre, kopier innholdet fra System Output-vinduet til filen modell.adoc, og kopier katalogen "diagrammer" fra området der du har EA prosjektfilen til området der du har asciidocdokumentene dine.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_skriving_i_asciidoc">3. Skriving i AsciiDoc</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Merk:  Dette er et kort sammendrag over nyttige funksjoner.  For en mer fullstendig oversikt, anbefales det å gå til <a href="https://docs.asciidoctor.org/" class="bare" target="_blank" rel="noopener">https://docs.asciidoctor.org/</a>.</p>
+</div>
+<div class="sect2">
+<h3 id="_overskrifter">3.1. Overskrifter</h3>
+<div class="paragraph">
+<p>Overskrifter i Asciidoc gjøres ved å sette ett eller flere erlik-tegn (=) foran overskriften. Antallet erlik-tegn avgjør hvilket nivå overskriften skal ha. Malene er utformet slik at kapitler har to erlik-tegn, delkapitler har tre erlik-tegn og seksjoner under dette har fire eller fler erlik-tegn.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>== Dette er et kapittel</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>=== Dette er et delkapittel</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>==== Dette er en seksjon i et delkapittel.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Malene er satt opp slik at de fire øverste nivåene blir nummerert og kommer med i innholdsfortegnelsen.  Dersom man bruker malene er det bare tittelen på dokumentet som skal ha ett erlik-tegn.</p>
+</div>
+<div class="paragraph">
+<p>Vedlegg markeres ved å skrive <code>[appendix]</code> i linja over kapitteloverskriften:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>[appendix]
+== Dette er et vedlegg.</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_figurer">3.2. Figurer</h3>
+<div class="paragraph">
+<p>Bilder og figurer inkluderes i asciidoc ved kommandoen <code>image</code> og en sti til figuren. Figurtekst oppgis før figuren med et punktum foran. Alternativ tekst legges i hakeparenteser umiddelbart etter stien til bildet. Dersom den alternative teksten inneholder komma, må den stå i anførselstegn.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>.Dette er en figur
+image::images/figur.png["Alternativ tekst til figur"]</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For standarder og produktspesifikasjoner som skal publiseres på nettsidene til Kartverket eller Geonorge <em>skal</em> det være en alternativ tekst til figurene.</p>
+</div>
+<div class="paragraph">
+<p>Det kan av og til være nyttig å la figurene være en lenke. Når det er en stor figur som er vanskelig å tyde i dokumentet kan det være en fordel å gi mulighet til enkelt å åpne figuren "for seg selv" i browseren så leseren kan zoome inn på detaljer.  Dette kan gjøres ved å legge link=sti_til_lenke i hakeparentesene etter den alternative teksten.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>.Dette er en figur
+image::images/figur.png["Alternativ tekst til figur", link=images/figur.png]</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_tabeller">3.3. Tabeller</h3>
+<div class="paragraph">
+<p>Tabeller markeres med <code>|===</code> i starten i starten og slutten av tabellen, og cellene adskilles med tegnet <code>|</code>.  Før tabellen kan man angi tabellegenskaper i hakeparentes og tittel på tabell med punktum foran. Typiske tabellegenskaper det er vanlig å bruke er <em>cols</em> som angir relativ bredde på kolonner og <em>options</em> som angir opsjoner for tabellen.  Dersom <em>cols</em> ikke er angitt, vil første raden i tabellen angi hvor mange kolonner tabellen har.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>[cols="1,3", options="header"]
+.Tabell over viktig innhold
+|===
+|kolonne1 |kolonne2
+|innhold 1 | innhold 2
+|===</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Vil gi følgende tabelloppsett:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Tabell 1. Tabell over viktig innhold</caption>
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 75%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">kolonne1</th>
+<th class="tableblock halign-left valign-top">kolonne2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">innhold 1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">innhold 2</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_inkludering_av_deldokumenter">3.4. Inkludering av deldokumenter</h3>
+<div class="paragraph">
+<p>Det kan noen ganger være ønskelig å dele dokumentet i mindre biter. Et dokument kan inkluderes ved å bruke kommandoen <code>include</code> med stien til deldokumentet:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>include::deldokument.adoc[]</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Det er også muligheter til å inkludere andre filer enn asciidoc-filer, som innhold i tabeller i csv-format eller programkode.</p>
+</div>
+<div class="paragraph">
+<p>Eksempel:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>[options="header", format=csv, separator=;]
+|===
+include::datatabell.csv[]
+|===</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Koden over vil fylle en tabell med innholdet i en semikolonseparert csv-fil.</p>
+</div>
+<div class="sect3">
+<h4 id="_inkludering_og_farging_av_kode">3.4.1. Inkludering og farging av kode</h4>
+<div class="paragraph">
+<p>Ved inkludering av kode er det mulig å legge til fargekoding av nøkkelord.  For å få til dette må en tilleggspakke for code highlighting legges inn. Se <a href="#_tilleggstrinn_installere_rouge">Tilleggstrinn: Installere Rouge</a> for hvordan du kan legge til rouge, som er en slik pakke.  Malene er satt opp til at rouge skal benyttes til fargekoding.</p>
+</div>
+<div class="paragraph">
+<p>For å inkludere kode kan man inkludere det som en fil:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>[source,xml]
+----
+include::Mittskjema.xsd[]
+----</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Det er også mulig å ha koden direkte i dokumentet:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>[source,visualbasic]
+----
+Private Sub Form_Load()
+    ' Execute a simple message box that says "Hello, World!"
+    MsgBox "Hello, World!"
+End Sub
+----</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Asciidoctor med rouge vil gi følgende resultat for det som står over</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="visualbasic"><span class="k">Private</span> <span class="k">Sub</span> <span class="nf">Form_Load</span><span class="p">()</span>
+    <span class="c1">' Execute a simple message box that says "Hello, World!"</span>
+    <span class="n">MsgBox</span> <span class="s">"Hello, World!"</span>
+<span class="k">End</span> <span class="k">Sub</span></code></pre>
+</div>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Viktig"></i>
+</td>
+<td class="content">
+AsciidocFX har innebygget verktøy for utheving av kode som virker <em>uavhengig</em> av rouge. For å generere kodeutheving i dokumenter med asciidoctor må rouge være installert som beskrevet her.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_lenking_til_eksterne_ressurser">3.5. Lenking til eksterne ressurser</h3>
+<div class="paragraph">
+<p>Dersom man skriver en http(s)-url eller en mailadresse i vanlig tekst, vil asciidoctor gjøre det om til en klikkbar lenke.  For eksempel vil</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>https://www.kartverket.no/
+standardiseringssekretariatet@kartverket.no</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>gi resultatene <a href="https://www.kartverket.no" class="bare">https://www.kartverket.no</a> og <a href="mailto:standardiseringssekretariatet@kartverket.no">standardiseringssekretariatet@kartverket.no</a></p>
+</div>
+<div class="paragraph">
+<p>Dersom man ønsker å ha en annen tekst på linkene kan man benytte kommandoen <code>link</code> (for http(s)-url) eller <code>mailto</code> (for mailadresser):</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>link:https://www.kartverket.no/[Kartverkets hjemmeside]
+mailto:standardiseringssekretariatet@kartverket.no[Send mail til Standardiseringssekretariatet]</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>gir resultatene <a href="https://www.kartverket.no/">Kartverkets hjemmeside</a> og <a href="mailto:standardiseringssekretariatet@kartverket.no">Send mail til Standardiseringssekretariatet</a>.</p>
+</div>
+<div class="paragraph">
+<p>Link kan også brukes til å angi relative adresser:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>link:eksempler/eksempel1.html[Klikk her for dokumentet som forklarer det første eksempelet]</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Dersom man setter tegnet ^ (caret/"tom" cirkumfleks) etter linkteksten (eller alene i hakeparentesene dersom man ønsker at linkadressen skal stå slik den er), vil nettsiden åpne i ny fane:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>link:https://www.kartverket.no/[Kartverkets hjemmeside^]
+link:https://www.kartverket.no/[^]</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_kryssreferanser">3.6. Kryssreferanser</h3>
+<div class="paragraph">
+<p>For å få laget en kryssreferanse må det eksistere en identifikator for stedet det skal refereres til.  Kryssreferansen genereres ved å sette identifikatoren i doble vinkelparenteser:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>&lt;&lt;kryssreferanseidentifikator&gt;&gt;</pre>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_automatisk_generering_av_referansepunkter">3.6.1. Automatisk generering av referansepunkter</h4>
+<div class="paragraph">
+<p>For kapitler og delkapitler genererer asciidoctor automatisk referansepunkter.  Disse vil ha en identifikator med samme navn som kapittelet, men med små bokstaver, ingen spesialtegn og _ som første tegn og skilletegn mellom ord.  F.eks. vil identifikatoren til dette kapittelet være</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>&lt;&lt;_kryssreferanser&gt;&gt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>og referansen til kapitlet om <a href="#_asciidoctor_og_rouge">Asciidoctor og Rouge</a> vil være</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>&lt;&lt;_asciidoctor_og_rouge&gt;&gt;</pre>
+</div>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Viktig"></i>
+</td>
+<td class="content">
+AsciidocFX bruker et annet system for automatisk generering av kryssreferanser, så referanser som er riktige for Asciidoctor vil ikke se riktige ut i AsciidocFX.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_manuell_generering_av_referansepunkter">3.6.2. Manuell generering av referansepunkter</h4>
+<div class="paragraph">
+<p>Et manuelt generert referansepunkt kan settes opp slik:</p>
+</div>
+<div id="kryssreferanseidentifikator" class="literalblock">
+<div class="content">
+<pre>[#kryssreferanseidentifikator, reftext="tekst som vises når man refererer"]</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Når man refererer med <code>&lt;&lt;kryssreferanseidentifikator&gt;&gt;</code>, vil teksten <a href="#kryssreferanseidentifikator">tekst som vises når man refererer</a> vises.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_krav_anbefalinger_og_tillatelser">3.7. Krav, anbefalinger og tillatelser</h3>
+<div class="paragraph">
+<p>Krav, anbefalinger og tillatelser kan skrives slik i AsciiDoc:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>.Krav: krav/nøkkelord/skal
+[#krav-nøkkelord-skal]
+====
+Et krav skal inneholde nøkkelordet _"skal"_
+====</pre>
+</div>
+</div>
+<div id="krav-nøkkelord-skal" class="exampleblock">
+<div class="title">Krav: krav/nøkkelord/skal</div>
+<div class="content">
+<div class="paragraph">
+<p>Et krav skal inneholde nøkkelordet <em>"Skal"</em></p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>En referanse (<code>&lt;&lt;krav-nøkkelord-skal&gt;&gt;</code>) vil se slik ut: <a href="#krav-nøkkelord-skal">Krav: krav/nøkkelord/skal</a></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Merk"></i>
+</td>
+<td class="content">
+Malene bruker strukturen til eksempelboksene i AsciiDoc til krav, anbefalinger og tillatelser.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_variable">3.8. Variable</h3>
+<div class="paragraph">
+<p>AsciiDoc har mulighet for å definere egne variable som kan skrives ut i teksten. Definisjon av variable gjøres slik:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>:variabelnavn: verdi</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For å skrive ut variabelen, setter man variabelnavnet i krøllparenteser:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>{variabelnavn}</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For eksempel, dersom man skriver</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>:minURL: https://www.kartverket.no/
+Jeg synes {minURL} har mye interessant stoff.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>vil det se slik ut i dokumentet:</p>
+</div>
+<div class="paragraph">
+<p>Jeg synes <a href="https://www.kartverket.no/" class="bare">https://www.kartverket.no/</a> har mye interessant stoff.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Viktig"></i>
+</td>
+<td class="content">
+Noen variabelnavn er allerede i bruk av AsciiDoc og malene.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_matematikk">3.9. Matematikk</h3>
+<div class="paragraph">
+<p>Det finnes to systemer for å skrive matematikk i asciidoc, AsciiMath og LaTeX. Malene er satt opp til å bruke LaTeX som standard. Nøkkelordet "stem" står for science, technology, engineering and math.</p>
+</div>
+<div class="paragraph">
+<p>For å skrive matematikk i løpende tekst, bruk</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>stem:[uttrykk]</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For eksempel, kan man skrive \(\binom{n}{k}=\frac{n!}{k!(n-k)!}\) direkte i teksten slik:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>For eksempel, kan man skrive stem:[\binom{n}{k}=\frac{n!}{k!(n-k)!}] direkte i teksten slik</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Dersom man ønsker en egen blokk med matematikk, bruk</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>[stem]
+++++
+uttrykk
+++++</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Eksempel</p>
+</div>
+<div class="stemblock">
+<div class="content">
+\[\binom{n}{k}=\frac{n!}{k!(n-k)!}\]
+</div>
+</div>
+<div class="paragraph">
+<p>skrives slik</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>[stem]
+++++
+\binom{n}{k}=\frac{n!}{k!(n-k)!}
+++++</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For nummererte ligninger, kapsler man inn ligningene i latexkommandoene begin{equation} og end{equation}.  Man kan referere til ligningene ved å utvide <code>[stem]</code> til <code>[stem#referanse, reftext=referansetekst]</code>. For eksempel vil</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>[stem#ligning, reftext=formel 1]
+++++
+\begin{equation}
+\binom{n}{k}=\frac{n!}{k!(n-k)!}
+\end{equation}
+++++</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>gi den nummererte ligningen</p>
+</div>
+<div id="ligning" class="stemblock">
+<div class="content">
+\[\begin{equation}
+\binom{n}{k}=\frac{n!}{k!(n-k)!}
+\end{equation}\]
+</div>
+</div>
+<div class="paragraph">
+<p>som kan refereres ved <code>&lt;&lt;ligning&gt;&gt;</code>. Referansen blir seende slik ut: <a href="#ligning">formel 1</a></p>
+</div>
+<div class="paragraph">
+<p>Dersom man ønsker å skrive en formel i asciimath bruker man nøkkelordet "asciimath" i stedet for "stem".</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tips"></i>
+</td>
+<td class="content">
+AsciidocFX har en tendens til å bruke overdrevent stor font på matematikken. I dokumenter generert med Asciidoctor har matematikkfonten normal størrelse.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tips"></i>
+</td>
+<td class="content">
+AsciidocFX vil også noen ganger vise referansepunkt i klammer i stedet for referansetekst, i dokumenter generert med Asciidoctor vises referanseteksten.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Sist oppdatert 2024-06-06 14:08:06 +0200
+</div>
+</div>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  messageStyle: "none",
+  tex2jax: {
+    inlineMath: [["\\(", "\\)"]],
+    displayMath: [["\\[", "\\]"]],
+    ignoreClass: "nostem|nolatexmath"
+  },
+  asciimath2jax: {
+    delimiters: [["\\$", "\\$"]],
+    ignoreClass: "nostem|noasciimath"
+  },
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+})
+MathJax.Hub.Register.StartupHook("AsciiMath Jax Ready", function () {
+  MathJax.InputJax.AsciiMath.postfilterHooks.Add(function (data, node) {
+    if ((node = data.script.parentNode) && (node = node.parentNode) && node.classList.contains("stemblock")) {
+      data.math.root.display = "block"
+    }
+    return data
+  })
+})
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script>
+</body>
+</html>
