@@ -45,7 +45,7 @@ Zip-fila skal inneholde følgende filer:
 Asciidoctor er verktøyet som benyttes til å generere html- og pdf-filer fra asciidoc-dokumenter. 
 
 ==== Trinn 1: Installere Ruby
-For å installere Asciidoctor, må først Ruby installeres. Dette kan gjøres ved å gå til link:https://rubyinstaller.org/[^] og installere siste versjon av Ruby.
+For å installere Asciidoctor, må først Ruby installeres. Dette kan gjøres ved å gå til link:https://rubyinstaller.org/downloads/[^] og last ned og installere den versjonen av Ruby som anbefales.
 
 ==== Trinn 2: Installere Asciidoctor
 
@@ -70,7 +70,10 @@ Dersom du planlegger å inkludere programkode eller skjema i dokumentet kan det 
  gem install rouge
 
 === AsciidocFX
-AsciidocFX er et verktøy som gjør det enklere å skrive asciidoc. Det kan installeres ved å gå til link:https://asciidocfx.com/[^], laste ned og installere siste versjon.
+AsciidocFX er et verktøy som gjør det enklere å skrive asciidoc. Det kan installeres ved å gå til link:https://asciidocfx.com/[^]
+
+* Last ned zip-filen for Windows og pakk den ut der du vil ha den, f.eks som C:/AsciidocFX.
+* Alternativt kan du laste ned exe-filen for Windows, som er en kjørbar installasjonsfil.
 
 Merk at andre verktøy som notepad, notepad++, emacs o.l. kan brukes til å skrive asciidoc, men AsciidoctorFX har funksjonalitet til å gi et samtidig inntrykk av hvordan det ferdige dokumentet vil se ut.
 
